@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QT9 ERP Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Calibri, sans-serif; background: #f6f6f6; display: flex; }
+    .sidebar {
+      width: 230px;
+      background: #2D2E3D;
+      color: white;
+      height: 100vh;
+      padding: 1rem 0;
+    }
+    .sidebar img {
+      width: 200px;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 2rem;
+    }
+    .sidebar li {
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .news-feed {
+      background: #4CCDFB;
+      margin: 0;
+      padding: 1rem 0.75rem;
+      border-radius: 3px;
+      border-top: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .news-feed.orange {
+      background: #F6982E;
+      color: white;
+    }
+    .row {
+      display: flex;
+      gap: 1rem;
+    }
+    .column {
+      flex: 1;
+    }
+    .placeholder-box {
+      height: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fafafa;
+      overflow: hidden;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .toolbar select, .toolbar button {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.9rem;
+    }
+    .header-section {
+      height: 100px;
+    }
+    .collapsible {
+      cursor: pointer;
+      background: #eee;
+      border: none;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      font-size: 1.1rem;
+      margin-bottom: 0.0rem;
+    }
+    .collapsible + .content {
+      overflow: hidden;
+      max-height: 1000px;
+      transition: max-height 0.2s ease-in-out;
+      display: flex;
+    }
+    .collapsible.collapsed + .content {
+      max-height: 0;
+      transition: max-height 0.2s ease-in-out;
+    }
+    .responsive-rounded {
+      width: 100%;
+      height: auto;
+      border-radius: 30px; 
+      padding: 20px;
+    }
+  </style>
+  <script>
+    function toggleContent() {
+      const button = document.querySelector('.collapsible');
+      const content = document.getElementById("feedSection");
+      button.classList.toggle('collapsed');
+      if (button.classList.contains('collapsed')) {
+        content.style.maxHeight = "0";
+      } else {
+        content.style.maxHeight = "1000px";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="https://erpval.qt9erp.app/assets/demo/default/media/img/logo/QT9-ERP-Logo-Reverse.png" alt="QT9 Logo" />
+    <img src="https://github.com/spulidoqt9/qt9-image-host/blob/main/Untitled-1%20(4)%2003%20Artboard%203.png?raw=true" alt="QT9 Logo" class="responsive-rounded" style="border-radius: 10%;" />
+    <ul>
+      <li>Admin</li>
+      <li>ERP Settings</li>
+      <li>Maintain</li>
+      <li>Accounting</li>
+      <li>Purchasing</li>
+      <li>Vendor Returns</li>
+      <li>Sales Orders</li>
+      <li>Customer Returns</li>
+      <li>Jobs</li>
+      <li>Shipping</li>
+      <li>Inventory</li>
+      <li>Compliance</li>
+      <li>Support Request</li>
+    </ul>
+  </div>
+  <div class="main">
+    <div class="header-section"></div>
+
+    <button class="collapsible" onclick="toggleContent()">News Feeds</button>
+    <div class="row content" id="feedSection">
+      <div class="column card">
+        <h3>QT9 News Feed</h3>
+        <div class="news-feed"><i class="fas fa-check-circle"></i> QT9 ERP Web – Version 2025 – Accounting Training Videos</div>
+        <div class="news-feed"><i class="fas fa-check-circle"></i> QT9 ERP 2025 is Arriving Sunday, Apr 27th</div>
+        <div class="news-feed orange"><i class="fas fa-info-circle"></i> 2025 QT9 Software Holidays</div>
+      </div>
+      <div class="column card">
+        <h3>Company Message Board</h3>
+        <div class="placeholder-box">
+          <img alt="EK Implementation Plan" src="https://raw.githubusercontent.com/spulidoqt9/qt9-image-host/39eee516a53750baa62abab9dee76cbf78ffff91/ERP%20Wiki%20Resources.svg" class="responsive-rounded" style="object-fit: center; object-position: center; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px; transition: transform 0.2s; transform: scale(1);" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div>Available Reports: All items checked</div>
+      <div>
+        <select>
+          <option>All</option>
+          <option>30 Days</option>
+        </select>
+        <button>Update View</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column card">
+        <h3 style="color: green;">Accounts Payable</h3>
+        <div class="placeholder-box"></div>
+      </div>
+      <div class="column card">
+        <h3 style="color: green;">Accounts Receivable</h3>
+        <div class="placeholder-box"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
